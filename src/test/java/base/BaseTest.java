@@ -6,6 +6,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import pageobjects.LoginPage;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -15,6 +16,7 @@ import java.time.Duration;
 public class BaseTest {
     public AndroidDriver driver;
     public AppiumDriverLocalService service;
+    protected LoginPage loginPage;
 
     @BeforeClass
     public void ConfigureAppium() throws MalformedURLException {
@@ -30,6 +32,8 @@ public class BaseTest {
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+        loginPage = new LoginPage(driver);
     }
 
     @AfterClass

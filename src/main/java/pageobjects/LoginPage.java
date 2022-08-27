@@ -11,7 +11,6 @@ public class LoginPage {
 
     AndroidDriver driver;
     public LoginPage(AndroidDriver driver){
-
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
@@ -32,7 +31,7 @@ public class LoginPage {
         emailField.sendKeys(emailAddress);
     }
 
-    private void setPasswordField(String password){
+    public void setPasswordField(String password){
         passwordField.sendKeys(password);
     }
 
@@ -40,8 +39,9 @@ public class LoginPage {
         checkBoxTerms.click();
     }
 
-    public void clickLoginButton(){
+    public HomePage clickLoginButton(){
         loginButton.click();
+        return new HomePage(driver);
     }
 
 
